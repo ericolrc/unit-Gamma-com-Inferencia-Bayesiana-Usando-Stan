@@ -9,7 +9,7 @@ rstan_options(auto_write = TRUE)
 options(mc.cores = parallel::detectCores())
 
 # Definindo o diretório de trabalho e verificando a localização atual
-setwd("C:/Users/Lenovo/Desktop/Mestrado/2023.1/Recursos Computacionais/V0/Stan")
+setwd("")
 getwd()
 
 # Carregando pacotes adicionais
