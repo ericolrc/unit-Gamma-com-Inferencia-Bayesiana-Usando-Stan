@@ -147,7 +147,7 @@ qplot(dat, geom = 'density')
 ###############################################################################
 
 # Ajustando o modelo Stan
-fit = stan(file = 'unit_gamma2.stan', data = list(Y = dat, n = N), 
+fit = stan(file = 'UG_stan.stan', data = list(Y = dat, n = N), 
            warmup = 1000, iter = 2500, chains = 3, verbose = FALSE)
 
 # Exibindo os resultados do ajuste
