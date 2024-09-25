@@ -146,12 +146,23 @@ qplot(dat, geom = 'density')
 
 ###############################################################################
 
+N <- length(dat)  # Tamanho da amostra
+
+# Criação da lista de dados
+data_list <- list(N = N, y = dat)
+
 # Ajustando o modelo Stan
-fit = stan(file = 'UG_stan.stan', data = list(Y = dat, n = N), 
-           warmup = 1000, iter = 2500, chains = 3, verbose = FALSE)
+fit <- stan(file = 'UG_stan.stan', data = data_list, 
+            warmup = 1000, iter = 2500, chains = 3, verbose = FALSE)
 
 # Exibindo os resultados do ajuste
 print(fit)
+
+# Resumo detalhado
+summary(fit)
+
+# Visualização das cadeias
+traceplot(fit)
 
 ###############################################################################
 
@@ -186,5 +197,4 @@ for (i in 1:N) {
 library(bayesplot)
 ppc_dens_overlay(dat, y_rep[1:100, ], color_scheme_set("darkgray")) + xlim(0, 1)
 
-# Alternativa de visualização com verificação posterior (pp_check)
-pp_check(stan_data$y, fun = 'dens_overlay')
+
